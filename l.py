@@ -1,3 +1,4 @@
+import asyncio
 from telethon.sync import TelegramClient
 from telethon import events
 from telethon.tl import types
@@ -11,7 +12,7 @@ password = '0207'
 
 response_message = "11"  # Updated auto-reply message
 group_chat_ids = [-1001766161750, -1001863685543]
-sender_ids = [1814850031, 6070986947, 1518090731, 5042719163]
+sender_ids = [6070986947, 1518090731, 5042719163]
 
 async def main():
     async with TelegramClient(session_file, api_id, api_hash) as client:
@@ -32,5 +33,5 @@ async def main():
         await client.run_until_disconnected()
 
 if __name__ == '__main__':
-    import asyncio
-    asyncio.run(main())
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
